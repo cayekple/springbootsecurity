@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot Security</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #3e3e3e;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form class="form-signin" method="post" action="/login">
+            <h2 class="form-signin-heading">Please login to Spring Security</h2>
+            <p>
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAArlJREFUWAndV7+LGkEUfq6i4i/UVDF2ViKYawS7HIIIgohdejtLi6sELbTJf2ETUllYWsiJIDaCip3lkRwop4VgoaJ5b+MO7ri7t+rKQQZk5v2Y7/v27ezMaAJs1Wr1y263+4HDx8PhECCfUc1kMv1BrGeLxfJUKpV+87imI/kIiT/xQSNtFPKGIr7yIgR68nuT04MQx7HKsucS0HqUee5rnHEJRr9zLf1KXFSBD23/t4BwOAzFYhGoV2t3rUAkEgGPxwPUq7W7CsBvX+SVeiURdxWgRMj7ZAJsNhuEQiHw+Xx8HlwbOwPiHBbJ9nq9kM/nwe12w36/h2azCcPhUAxfG5OwtXpWgXg8LpJTsiAIkEgk2LxrYwxAY8AEaOTcNcQE9Pt9WK1WIhm9gna7zYivjTEAjYGpXC4fpDgttGAwCIvFApbLpeQWe62YLPEdAz/JV0zpHO8HLzIB78w1NIxCFijigb0CQ9F1gOHJ6Kf7wYcJOGr8xvYBHaJ1pTgcDigUCuByucT8Xq8HrVZLcS5W4bPhFchkMoxckZVzGiogGo1qHr0ct2gaJoCO3XQ6rcSh6RPwc6B7+80tm82C3W6HzWbDNjQ9oFSBZz2JWjmxWEw8RSmHFh2J0NsE2pGwCm96J/B5fr8fksmk6J7NZtDtdsFsNvNpqrZA/1ToHwuK+HnN68jlcmC1WkWCwWAAgUBAJoCOd9re1dq/O5NaVMF/enZQuFKpKGTJXdvtFmq1mtx5tAz7ChTRdThv3gkbjcYZTSqVAqfTKfqn0ymMRqOzHMlxs4DxeCxhsf70NjWfz2EymbAYP7hYAC7UV9rDeaBTm+4SeNKJrvV6fRqSjQnrYgGI0MHfdxkSZ9Trdc6janYuXoTHfWOhCqkzgE9PF5KniwXgvvGCEx8Q4BeVUCcfS6M5NJcwCOsveWDvbwOBJXUAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;" autocomplete="off">
+            </p>
+            <p>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+            </p>
+            <p>
+                Remember me?
+                <input type="checkbox" id="remember-me" name="remember-me" class="form-control" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAkCAYAAADo6zjiAAAAAXNSR0IArs4c6QAAArlJREFUWAndV7+LGkEUfq6i4i/UVDF2ViKYawS7HIIIgohdejtLi6sELbTJf2ETUllYWsiJIDaCip3lkRwop4VgoaJ5b+MO7ri7t+rKQQZk5v2Y7/v27ezMaAJs1Wr1y263+4HDx8PhECCfUc1kMv1BrGeLxfJUKpV+87imI/kIiT/xQSNtFPKGIr7yIgR68nuT04MQx7HKsucS0HqUee5rnHEJRr9zLf1KXFSBD23/t4BwOAzFYhGoV2t3rUAkEgGPxwPUq7W7CsBvX+SVeiURdxWgRMj7ZAJsNhuEQiHw+Xx8HlwbOwPiHBbJ9nq9kM/nwe12w36/h2azCcPhUAxfG5OwtXpWgXg8LpJTsiAIkEgk2LxrYwxAY8AEaOTcNcQE9Pt9WK1WIhm9gna7zYivjTEAjYGpXC4fpDgttGAwCIvFApbLpeQWe62YLPEdAz/JV0zpHO8HLzIB78w1NIxCFijigb0CQ9F1gOHJ6Kf7wYcJOGr8xvYBHaJ1pTgcDigUCuByucT8Xq8HrVZLcS5W4bPhFchkMoxckZVzGiogGo1qHr0ct2gaJoCO3XQ6rcSh6RPwc6B7+80tm82C3W6HzWbDNjQ9oFSBZz2JWjmxWEw8RSmHFh2J0NsE2pGwCm96J/B5fr8fksmk6J7NZtDtdsFsNvNpqrZA/1ToHwuK+HnN68jlcmC1WkWCwWAAgUBAJoCOd9re1dq/O5NaVMF/enZQuFKpKGTJXdvtFmq1mtx5tAz7ChTRdThv3gkbjcYZTSqVAqfTKfqn0ymMRqOzHMlxs4DxeCxhsf70NjWfz2EymbAYP7hYAC7UV9rDeaBTm+4SeNKJrvV6fRqSjQnrYgGI0MHfdxkSZ9Trdc6janYuXoTHfWOhCqkzgE9PF5KniwXgvvGCEx8Q4BeVUCcfS6M5NJcwCOsveWDvbwOBJXUAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" autocomplete="off">
+            </p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
